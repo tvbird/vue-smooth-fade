@@ -1,5 +1,6 @@
 {
   "name": "vue-smooth-fade",
+  "author": "Tvbird",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/smooth-fade.umd.js",
@@ -11,7 +12,8 @@
     },
     "./dist/style.css": "./dist/style.css"
   },
-  "files": ["dist"],
+  "files": ["dist", "src"],
+  "keywords": ["vue", "vue3", "component", "library", "height", "fade", "opacity"],
   "scripts": {
     "dev": "vite",
     "build": "vite build"
