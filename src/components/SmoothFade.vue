@@ -5,7 +5,8 @@
     const props = defineProps({
         modelValue: { type: Boolean, default: false },
         duration: { type: Number, default: 700 },
-        easing: { type: String, default: "ease-in-out" }
+        easing: { type: String, default: "ease-in-out" },
+        overflow: { type: Boolean, default: false }
     })
 
     const reSlot = ref(null)
@@ -37,7 +38,7 @@
 
     const showHide = (show = true) => {
         if (show) {
-            reSlot.value.style.display = "block"
+            reSlot.value.style.visibility = "visible"
             reSlot.value.animate(
                 { height: ["0", `${height.value}px`], opacity: [0, 1] },
                 { duration: props.duration, easing: props.easing, fill: "forwards" }
@@ -48,21 +49,21 @@
                 { duration: props.duration, easing: props.easing, fill: "both" }
             ).onfinish = () => {
                 emit("update:modelValue", false)
-                reSlot.value.style.display = "none"
+                reSlot.value.style.visibility = "hidden"
             }
         }
     }
 
     onMounted(() => {
         if (!props.modelValue) {
-            reSlot.value.style.display = "none"
+            reSlot.value.style.visibility = "hidden"
             reSlot.value.animate({ height: [0] }, { duration: 1, fill: "forwards" })
         }
     })
 </script>
 
 <template>
-    <div ref="reSlot" :class="!props.modelValue ? 'xfade' : null">
+    <div ref="reSlot" :class="!props.modelValue && overflow ? 'xfade' : null">
         <slot></slot>
     </div>
 </template>
