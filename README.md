@@ -2,6 +2,9 @@
 
 Vue 3 plugin for smooth hiding and showing content
 
+## Demo
+![alt text]((https://github.com/tvbird/vue-smooth-fade/blob/main/demo.gif?raw=true))
+
 ## Installation
 ```
 npm i vue-smooth-fade
