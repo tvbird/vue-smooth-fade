@@ -1,8 +1,17 @@
 {
   "name": "vue-smooth-fade",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "main": "./dist/smooth-fade.umd.js",
+  "module": "./dist/smooth-fade.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/smooth-fade.es.js",
+      "require": "./dist/smooth-fade.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": ["dist"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
