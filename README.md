@@ -2,6 +2,36 @@
 
 Vue 3 plugin for smooth hiding and showing content
 
+## Installation
+```
+npm i vue-smooth-fade
+```
+
+## Usage
+Inside vue components use:
+
+```vue
+<script setup>
+    import { SmoothFade } from 'vue-smooth-fade'
+    import 'vue-smooth-fade/dist/style.css' // Import styles
+    
+    import { ref } from 'vue'
+    
+    const show = ref(false)
+</script>
+
+<template>
+    <SmoothFade v-model="show">
+        <div>
+            ........
+        </div>
+    </SmoothFade>
+    
+    <a href="#" @click.prevent="show = !show">Toggle</a>
+</template>
+```
+
+
 ## Props
 
 | Attribute      |   Type   |    Default    | Description                                                                |
