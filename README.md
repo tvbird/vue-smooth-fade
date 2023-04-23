@@ -3,7 +3,7 @@
 Vue 3 plugin for smooth hiding and showing content
 
 ## Demo
-![alt text]((https://github.com/tvbird/vue-smooth-fade/blob/main/demo.gif?raw=true))
+![alt text](https://user-images.githubusercontent.com/14884577/233840228-86e24072-cb56-40a5-8a08-11de13b51848.gif)
 
 ## Installation
 ```
