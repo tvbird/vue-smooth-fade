@@ -1,16 +1,24 @@
 <script setup>
+    import { ref } from "vue"
     import HelloWorld from "./components/HelloWorld.vue"
+    import SmoothFade from "./components/SmoothFade.vue"
+
+    const show = ref(true)
 </script>
 
 <template>
-    <div>
-        <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
-    </div>
+    <a href="#" @click.prevent="show = !show">Show / Hide</a>
+    <SmoothFade v-model="show">
+        <div>
+            <a href="https://vitejs.dev" target="_blank">
+                <img src="/vite.svg" class="logo" alt="Vite logo" />
+            </a>
+            <a href="https://vuejs.org/" target="_blank">
+                <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+            </a>
+        </div>
+    </SmoothFade>
+
     <HelloWorld msg="Vite + Vue" />
 </template>
 
