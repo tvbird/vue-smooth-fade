@@ -1,8 +1,9 @@
 {
   "name": "vue-smooth-fade",
   "author": "Tvbird",
-  "version": "0.0.3.1",
+  "version": "0.0.5",
   "type": "module",
+  "license": "MIT",
   "main": "./dist/smooth-fade.umd.js",
   "module": "./dist/smooth-fade.es.js",
   "exports": {
