@@ -89,9 +89,3 @@
         <slot></slot>
     </div>
 </template>
-
-<style lang="scss" scoped>
-    .xfade {
-        overflow: hidden;
-    }
-</style>
