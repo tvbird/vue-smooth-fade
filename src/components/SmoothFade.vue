@@ -1,5 +1,5 @@
 <script setup>
-    import { onMounted, ref, watch } from "vue"
+    import { onMounted, onUnmounted, ref, watch } from "vue"
 
     const emit = defineEmits(["update:modelValue"])
     const props = defineProps({
@@ -11,6 +11,12 @@
 
     const reSlot = ref(null)
     const height = ref(0)
+
+    const resizeObserver = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+            height.value = getHeight(entry.target)
+        }
+    })
 
     function getHeight(el, styles = {}) {
         if (!el?.cloneNode) return 0
@@ -33,7 +39,6 @@
         return height
     }
 
-    watch(() => reSlot.value, (e) => (height.value = getHeight(e))) // prettier-ignore
     watch(() => props.modelValue, (e) => showHide(e)) // prettier-ignore
 
     const showHide = (show = true) => {
@@ -59,6 +64,12 @@
             reSlot.value.style.visibility = "hidden"
             reSlot.value.animate({ height: [0] }, { duration: 1, fill: "forwards" })
         }
+
+        if (reSlot.value) resizeObserver.observe(reSlot.value)
+    })
+
+    onUnmounted(() => {
+        if (resizeObserver) resizeObserver.unobserve(reSlot.value)
     })
 </script>
 

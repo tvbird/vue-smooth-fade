@@ -1,5 +1,5 @@
 <script setup>
-    import { ref } from "vue"
+    import { onMounted, ref } from "vue"
     import SmoothFade from "./SmoothFade.vue"
 
     defineProps({
@@ -8,6 +8,15 @@
 
     const count = ref(0)
     const show = ref(true)
+
+    const data = ref("")
+
+    onMounted(() => {
+        setTimeout(() => {
+            data.value =
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam debitis earum esse iusto laborum numquam obcaecati qui rerum soluta. Accusamus alias aperiam aspernatur doloribus illo in iure maiores necessitatibus perferendis provident, quaerat qui quod quos repellat repudiandae totam vel velit vero. Alias atque autem culpa deleniti dicta "
+        }, 1500)
+    })
 </script>
 
 <template>
@@ -25,6 +34,7 @@
             in your IDE for a better DX
         </p>
         <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+        <p>{{ data }}</p>
     </SmoothFade>
 
     <div class="card">
