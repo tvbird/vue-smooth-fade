@@ -8,7 +8,7 @@
 
 <template>
     <a href="#" @click.prevent="show = !show">Show / Hide</a>
-    <SmoothFade v-model="show">
+    <SmoothFade v-model="show" :overflow="true">
         <div>
             <a href="https://vitejs.dev" target="_blank">
                 <img src="/vite.svg" class="logo" alt="Vite logo" />

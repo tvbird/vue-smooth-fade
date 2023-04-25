@@ -40,11 +40,14 @@
         return height
     }
 
-    watch(() => props.modelValue, (e) => showHide(e)) // prettier-ignore
+    watch(
+        () => props.modelValue,
+        (nue) => {
+            if (canToggle.value) showHide(nue)
+        }
+    )
 
     const showHide = (show = true) => {
-        if (!canToggle.value) return false
-
         canToggle.value = false
         if (show) {
             reSlot.value.style.visibility = "visible"
@@ -81,7 +84,8 @@
 </script>
 
 <template>
-    <div ref="reSlot" :class="!props.modelValue && overflow ? 'xfade' : null">
+    <div ref="reSlot" :style="{ overflow: !props.modelValue && overflow ? 'hidden' : null }">
+        <pre>{{ canToggle }}</pre>
         <slot></slot>
     </div>
 </template>

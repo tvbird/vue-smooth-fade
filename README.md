@@ -3,7 +3,7 @@
 Vue 3 plugin for smooth hiding and showing content
 
 ## Demo
-![alt text](https://user-images.githubusercontent.com/14884577/233840228-86e24072-cb56-40a5-8a08-11de13b51848.gif)
+![Demo](https://user-images.githubusercontent.com/14884577/233840228-86e24072-cb56-40a5-8a08-11de13b51848.gif)
 
 ## Installation
 ```
@@ -16,8 +16,6 @@ Inside vue components use:
 ```vue
 <script setup>
     import { SmoothFade } from 'vue-smooth-fade'
-    import 'vue-smooth-fade/dist/style.css' // Import styles
-    
     import { ref } from 'vue'
     
     const show = ref(false)
