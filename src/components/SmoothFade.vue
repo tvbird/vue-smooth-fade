@@ -85,7 +85,6 @@
 
 <template>
     <div ref="reSlot" :style="{ overflow: !props.modelValue && overflow ? 'hidden' : null }">
-        <pre>{{ canToggle }}</pre>
         <slot></slot>
     </div>
 </template>
