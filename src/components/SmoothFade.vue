@@ -9,6 +9,7 @@
         overflow: { type: Boolean, default: false }
     })
 
+    const canToggle = ref(true)
     const reSlot = ref(null)
     const height = ref(0)
 
@@ -42,12 +43,17 @@
     watch(() => props.modelValue, (e) => showHide(e)) // prettier-ignore
 
     const showHide = (show = true) => {
+        if (!canToggle.value) return false
+
+        canToggle.value = false
         if (show) {
             reSlot.value.style.visibility = "visible"
             reSlot.value.animate(
                 { height: ["0", `${height.value}px`], opacity: [0, 1] },
                 { duration: props.duration, easing: props.easing, fill: "forwards" }
-            )
+            ).onfinish = () => {
+                canToggle.value = true
+            }
         } else {
             reSlot.value.animate(
                 { height: [`${height.value}px`, 0], opacity: [1, 0] },
@@ -55,6 +61,7 @@
             ).onfinish = () => {
                 emit("update:modelValue", false)
                 reSlot.value.style.visibility = "hidden"
+                canToggle.value = true
             }
         }
     }
