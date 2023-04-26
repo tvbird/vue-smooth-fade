@@ -79,7 +79,7 @@
     })
 
     onUnmounted(() => {
-        if (resizeObserver) resizeObserver.unobserve(reSlot.value)
+        if (resizeObserver && reSlot.value) resizeObserver.unobserve(reSlot.value)
     })
 </script>
 
