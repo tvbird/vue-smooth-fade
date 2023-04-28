@@ -1,5 +1,5 @@
 <script setup>
-    import { onMounted, onUnmounted, ref, watch } from "vue"
+    import { onBeforeUnmount, onMounted, ref, watch } from "vue"
 
     const emit = defineEmits(["update:modelValue"])
     const props = defineProps({
@@ -78,7 +78,7 @@
         if (reSlot.value) resizeObserver.observe(reSlot.value)
     })
 
-    onUnmounted(() => {
+    onBeforeUnmount(() => {
         if (resizeObserver && reSlot.value) resizeObserver.unobserve(reSlot.value)
     })
 </script>
