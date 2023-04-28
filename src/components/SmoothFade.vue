@@ -51,6 +51,10 @@
         canToggle.value = false
         if (show) {
             reSlot.value.style.visibility = "visible"
+
+            const heightOne = getHeight(reSlot.value)
+            if (heightOne !== height.value) height.value = heightOne
+
             reSlot.value.animate(
                 { height: ["0", `${height.value}px`], opacity: [0, 1] },
                 { duration: props.duration, easing: props.easing, fill: "forwards" }
