@@ -14,8 +14,10 @@
     const height = ref(0)
 
     const resizeObserver = new ResizeObserver((entries) => {
-        for (let entry of entries) {
-            height.value = getHeight(entry.target)
+        if (canToggle.value) {
+            for (let entry of entries) {
+                height.value = getHeight(entry.target)
+            }
         }
     })
 
@@ -73,6 +75,17 @@
         }
     }
 
+    const reCalc = (heightOne = null, duration = props.duration) => {
+        canToggle.value = false
+
+        if (!heightOne) heightOne = getHeight(reSlot.value)
+        else height.value = heightOne
+
+        reSlot.value.animate({ height: `${heightOne}` }, { duration, easing: props.easing, fill: "forwards" }).onfinish = () => {
+            canToggle.value = true
+        }
+    }
+
     onMounted(() => {
         if (!props.modelValue) {
             reSlot.value.style.visibility = "hidden"
@@ -85,6 +98,8 @@
     onBeforeUnmount(() => {
         if (resizeObserver && reSlot.value) resizeObserver.unobserve(reSlot.value)
     })
+
+    defineExpose({ reCalc })
 </script>
 
 <template>
